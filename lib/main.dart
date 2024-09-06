@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:conversion/conversion.dart';
-import 'dart:math';
+import 'package:numberconverter/Calculator.dart';
+
 
 import 'package:numberconverter/ConvertPage.dart';
 
@@ -9,6 +9,7 @@ void main() {
     initialRoute: '/Convert',
     routes: {
       '/Convert': (context)=> HomePage(),
+      '/Calculate':(context)=>Calcultor(),
     },
   debugShowCheckedModeBanner: false,));
 }

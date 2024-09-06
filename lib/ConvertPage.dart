@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:conversion/conversion.dart';
 import 'dart:math';
 
-
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
@@ -223,213 +222,237 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 555,
               child: DecoratedBox(
-                decoration: BoxDecoration(color: Color.fromRGBO(253, 247, 231, 10)),
+                decoration:
+                    BoxDecoration(color: Color.fromRGBO(253, 247, 231, 10)),
                 child: Center(
                     child: Column(
                         children: [
+                      Text(
+                        "${_getRadixString(_input_radix)} to ${_getRadixString(_output_radix)} Converter",
+                        style: TextStyle(
+                            fontSize: 32, fontStyle: FontStyle.italic),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
                           Text(
-                            "${_getRadixString(_input_radix)} to ${_getRadixString(_output_radix)} Converter",
-                            style: TextStyle(fontSize: 32,fontStyle:FontStyle.italic  ),
+                            "From",
+                            style: TextStyle(fontSize: 26),
                           ),
                           SizedBox(
-                            height: 20,
+                            width: 145,
                           ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              Text(
-                                "From",
-                                style: TextStyle(fontSize: 26),
-                              ),
-                              SizedBox(
-                                width: 145,
-                              ),
-                              Text(
-                                "To",
-                                style: TextStyle(fontSize: 26),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              DropdownMenu(
-                                dropdownMenuEntries: [
-                                  DropdownMenuEntry(value: 0, label: "Binary"),
-                                  DropdownMenuEntry(value: 1, label: "Decimal"),
-                                  DropdownMenuEntry(value: 2, label: "Octal"),
-                                  DropdownMenuEntry(value: 3, label: "Hex")
-                                ],
-                                controller: _inputdrop,
-                                onSelected: (value) {
-                                  _inputchange(value);
-                                },
-                                width: 150,
-                                initialSelection: _current_input,
-                                inputDecorationTheme: InputDecorationTheme(
-                                    filled: true, fillColor: Colors.white),
-                              ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              DropdownMenu(
-                                dropdownMenuEntries: [
-                                  DropdownMenuEntry(value: 0, label: "Binary"),
-                                  DropdownMenuEntry(value: 1, label: "Decimal"),
-                                  DropdownMenuEntry(value: 2, label: "Octal"),
-                                  DropdownMenuEntry(value: 3, label: "Hex")
-                                ],
-                                controller: _outputdrop,
-                                onSelected: (value) {
-                                  _outputchange(value);
-                                },
-                                width: 150,
-                                initialSelection: _current_output,
-                                inputDecorationTheme: InputDecorationTheme(
-                                    fillColor: Colors.white, filled: true),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              Text(
-                                "${_getRadixString(_input_radix)} Number",
-                                style: TextStyle(fontSize: 26),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              SizedBox(
-                                height: 50,
-                                width: 350,
-                                child: TextField(
-                                  controller: _inputtext,
-                                  onChanged: (value) {
-                                    input_value = value;
-                                  },
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Container(
-                                  height: 50,
-                                  width: 130,
-                                  child: ElevatedButton(
-                                    onPressed: _convert,
-                                    child: Row(children: [
-                                      Icon(Icons.keyboard_arrow_down),
-                                      Text(
-                                        "Convert",
-                                        style: TextStyle(fontSize: 16),
-                                      )
-                                    ]),
-                                  )),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                  width: 130,
-                                  height: 50,
-                                  child: ElevatedButton(
-                                      onPressed: _clear,
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.clear),
-                                          Text("Reset",
-                                              style: TextStyle(fontSize: 16))
-                                        ],
-                                      ))),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                  height: 50,
-                                  width: 130,
-                                  child: ElevatedButton(
-                                      onPressed: _swap,
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.swap_horiz),
-                                          Text("Swap",
-                                              style: TextStyle(fontSize: 16))
-                                        ],
-                                      )))
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              Text(
-                                "${_getRadixString(_output_radix)} Number",
-                                style: TextStyle(fontSize: 26),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 25,
-                              ),
-                              SizedBox(
-                                width: 350,
-                                height: 50,
-                                child: TextField(
-                                  controller: _outputtext,
-                                  decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      enabled: false),
-                                ),
-                              ),
-                            ],
+                          Text(
+                            "To",
+                            style: TextStyle(fontSize: 26),
                           )
                         ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          DropdownMenu(
+                            dropdownMenuEntries: [
+                              DropdownMenuEntry(value: 0, label: "Binary"),
+                              DropdownMenuEntry(value: 1, label: "Decimal"),
+                              DropdownMenuEntry(value: 2, label: "Octal"),
+                              DropdownMenuEntry(value: 3, label: "Hex")
+                            ],
+                            controller: _inputdrop,
+                            onSelected: (value) {
+                              _inputchange(value);
+                            },
+                            width: 150,
+                            initialSelection: _current_input,
+                            inputDecorationTheme: InputDecorationTheme(
+                                filled: true, fillColor: Colors.white),
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          DropdownMenu(
+                            dropdownMenuEntries: [
+                              DropdownMenuEntry(value: 0, label: "Binary"),
+                              DropdownMenuEntry(value: 1, label: "Decimal"),
+                              DropdownMenuEntry(value: 2, label: "Octal"),
+                              DropdownMenuEntry(value: 3, label: "Hex")
+                            ],
+                            controller: _outputdrop,
+                            onSelected: (value) {
+                              _outputchange(value);
+                            },
+                            width: 150,
+                            initialSelection: _current_output,
+                            inputDecorationTheme: InputDecorationTheme(
+                                fillColor: Colors.white, filled: true),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Text(
+                            "${_getRadixString(_input_radix)} Number",
+                            style: TextStyle(fontSize: 26),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          SizedBox(
+                            height: 50,
+                            width: 350,
+                            child: TextField(
+                              controller: _inputtext,
+                              onChanged: (value) {
+                                input_value = value;
+                              },
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Container(
+                              height: 50,
+                              width: 130,
+                              child: ElevatedButton(
+                                onPressed: _convert,
+                                child: Row(children: [
+                                  Icon(Icons.keyboard_arrow_down),
+                                  Text(
+                                    "Convert",
+                                    style: TextStyle(fontSize: 16),
+                                  )
+                                ]),
+                              )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                              width: 130,
+                              height: 50,
+                              child: ElevatedButton(
+                                  onPressed: _clear,
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.clear),
+                                      Text("Reset",
+                                          style: TextStyle(fontSize: 16))
+                                    ],
+                                  ))),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                              height: 50,
+                              width: 130,
+                              child: ElevatedButton(
+                                  onPressed: _swap,
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.swap_horiz),
+                                      Text("Swap",
+                                          style: TextStyle(fontSize: 16))
+                                    ],
+                                  )))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Text(
+                            "${_getRadixString(_output_radix)} Number",
+                            style: TextStyle(fontSize: 26),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 25,
+                          ),
+                          SizedBox(
+                            width: 350,
+                            height: 50,
+                            child: TextField(
+                              controller: _outputtext,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabled: false),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center)),
               ),
             ),
           ])),
-      bottomNavigationBar: BottomNavigationBar(backgroundColor: Color.fromRGBO(253, 247, 231, 10),items: [BottomNavigationBarItem(icon: Icon(Icons.swap_horiz),label:"Convert" ),BottomNavigationBarItem(icon: Icon(Icons.calculate),label: "Calculate")]),);
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromRGBO(253, 247, 231, 10),
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.swap_horiz), label: "Convert"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calculate), label: "Calculate")
+        ],
+        onTap: (value) {
+          if(value==0){
+            Navigator.pushNamed(context, "/Convert");
+          }
+          else
+            {
+              if(value==1)
+                {
+                  _outputtext.text=value.toString();
+                  Navigator.pushNamed(context, "/Calculate");
+                }
+            }
+        },
+      ),
+    );
   }
 }
 
