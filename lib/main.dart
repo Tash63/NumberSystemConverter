@@ -443,7 +443,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ])),
-    );
+    bottomNavigationBar: BottomNavigationBar(items: [BottomNavigationBarItem(icon: Icon(Icons.swap_horiz),label:"Convert" ),BottomNavigationBarItem(icon: Icon(Icons.calculate),label: "Calculate")]),);
   }
 }
 
