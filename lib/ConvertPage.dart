@@ -439,17 +439,9 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.calculate), label: "Calculate")
         ],
         onTap: (value) {
-          if(value==0){
-            Navigator.pushNamed(context, "/Convert");
+          if (value == 1) {
+            Navigator.pushNamed(context, "/Calculate");
           }
-          else
-            {
-              if(value==1)
-                {
-                  _outputtext.text=value.toString();
-                  Navigator.pushNamed(context, "/Calculate");
-                }
-            }
         },
       ),
     );
